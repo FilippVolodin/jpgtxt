@@ -9,14 +9,14 @@ def write_jpeg_header(ba, w, h):
 
     # write DQT
     ba += bytearray.fromhex("FF DB 00 43 00"
-                            "FF FF FF FF FF FF FF FF"
-                            "FF FF FF FF FF FF FF FF"
-                            "FF FF FF FF FF FF FF FF"
-                            "FF FF FF FF FF FF FF FF"
-                            "FF FF FF FF FF FF FF FF"
-                            "FF FF FF FF FF FF FF FF"
-                            "FF FF FF FF FF FF FF FF"
-                            "FF FF FF FF FF FF FF FF")
+                            "FF 20 20 20 20 20 20 20"
+                            "20 20 20 20 20 20 20 20"
+                            "20 20 20 20 20 20 20 20"
+                            "20 20 20 20 20 20 20 20"
+                            "20 20 20 20 20 20 20 20"
+                            "20 20 20 20 20 20 20 20"
+                            "20 20 20 20 20 20 20 20"
+                            "20 20 20 20 20 20 20 20")
 
     # write SOF0
     ba += bytearray.fromhex("FF C0 00 0B 08")
