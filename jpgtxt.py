@@ -34,8 +34,8 @@ def write_jpeg_header(ba, w, h):
     ba += bytearray.fromhex("FF DA 00 08 01 01 00 00 3F 00")
 
 def write_jpeg_stream(ba, gray_data):
-    d = {-6: 0x24, -5: 0x28, -4: 0x2C, -3: 0x50, -2: 0x54, -1: 0x44,
-          0: 0x60, 1: 0x4C, 2: 0x58, 3: 0x5C, 4: 0x30, 5: 0x34, 6: 0x38 }
+    d = {-7: 0x21, -6: 0x24, -5: 0x28, -4: 0x2C, -3: 0x50, -2: 0x54, -1: 0x44,
+          0: 0x60, 1: 0x4C, 2: 0x58, 3: 0x5C, 4: 0x30, 5: 0x34, 6: 0x38, 7: 0x3C }
 
     prev_coef = 0
     coef = 0
@@ -48,10 +48,10 @@ def write_jpeg_stream(ba, gray_data):
         # so we need to write compensation byte
         # alternatively we could use RST markers
         ba.append(0x4C)
+        # prev_coef -= 1
 
         for v in row:
-
-            coef = v // 37 - 3
+            coef = v // 32 - 3
             diff = coef - prev_coef
             prev_coef = coef
 
